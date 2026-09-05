@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tạo link mời cá nhân · Hân Graduation</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="index.html">← Về thiệp</a>
+    <span>Tạo link mời</span>
+  </header>
+  <main class="admin-wrap">
+    <h1>Tạo link mời cá nhân</h1>
+    <p class="muted">Nhập mỗi dòng 1 tên khách → bấm <strong>Tạo link</strong> → copy cột Link dán vào Google Sheet (cột Link cá nhân). Link mẫu: <code>?to=TenKhach</code></p>
+    <div class="grid2">
+      <div class="card">
+        <h3>1. Danh sách khách</h3>
+        <textarea id="names" class="code" rows="10" placeholder="VD:&#10;Cô Lan&#10;Anh Minh&#10;Gia đình bạn An"></textarea>
+        <label>Link gốc (Base URL)
+          <input id="base" style="width:100%;margin-top:.3rem;padding:.6rem;border-radius:10px;border:1.5px solid #f0cbd7" />
+        </label>
+        <div class="cta-row" style="justify-content:flex-start">
+          <button class="btn primary" id="gen">Tạo link</button>
+          <button class="btn ghost" id="csv">Tải CSV</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>2. Kết quả</h3>
+        <p class="muted" id="count">Chưa có.</p>
+        <div style="overflow:auto">
+        <table class="links"><thead><tr><th>Tên</th><th>Link</th><th></th></tr></thead><tbody id="rows"></tbody></table>
+        </div>
+      </div>
+    </div>
+    <p class="hint">Mẹo Sheet: tạo 2 cột <code>Tên khách | Link cá nhân</code>, gửi từng link riêng qua Zalo/Messenger.</p>
+  </main>
+  <script src="config.js"></script>
+  <script>
+    const $ = id => document.getElementById(id);
+    $('base').value = (typeof CONFIG !== 'undefined' ? CONFIG.baseUrl : location.href.replace('admin.html',''));
+    let last = [];
+    $('gen').onclick = () => {
+      const base = $('base').value.trim().replace(/\/$/,'') + '/';
+      const names = $('names').value.split('\n').map(s=>s.trim()).filter(Boolean);
+      last = names.map(n => ({ name:n, link: base + '?to=' + encodeURIComponent(n) }));
+      $('count').textContent = last.length ? `Đã tạo ${last.length} link.` : 'Chưa có.';
+      $('rows').innerHTML = last.map((r,i)=>`<tr><td>${r.name}</td><td><a href="${r.link}" target="_blank">${r.link}</a></td><td><button data-i="${i}" class="btn small">Copy</button></td></tr>`).join('');
+      document.querySelectorAll('button[data-i]').forEach(b=>b.onclick=()=>{navigator.clipboard.writeText(last[+b.dataset.i].link); b.textContent='Đã copy!';});
+    };
+    $('csv').onclick = () => {
+      if(!last.length) return alert('Bấm Tạo link trước đã');
+      const csv = 'Ten,Link ca nhan\n' + last.map(r=>`"${r.name.replace(/"/g,'""')}","${r.link}"`).join('\n');
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob(["\ufeff"+csv],{type:'text/csv'}));
+      a.download = 'links-moi.csv'; a.click();
+    };
+  </script>
+</body>
+</html>

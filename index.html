@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thiệp Mời Tốt Nghiệp · Nguyễn Bảo Hân</title>
+  <meta name="description" content="Thiệp mời tốt nghiệp của Nguyễn Bảo Hân – UEH-ISB. Trân trọng kính mời bạn đến chung vui!" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top">🎓 Hân Graduation</a>
+    <nav class="nav-links">
+      <a href="#thong-tin">Thông tin</a>
+      <a href="#lich-trinh">Lịch trình</a>
+      <a href="#rsvp">Xác nhận</a>
+      <a href="admin.html" class="admin-link">Tạo link mời</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card">
+        <p class="eyebrow">THIỆP MỜI TỐT NGHIỆP</p>
+        <div class="avatar">H</div>
+        <h1>Nguyễn Bảo Hân</h1>
+        <p class="school" id="schoolLine">UEH-ISB · Viện Tài năng – Đại học UEH</p>
+        <p class="note" id="heroNote">Sự hiện diện của bạn là món quà lớn nhất!</p>
+
+        <div class="invite-box" id="inviteBox">
+          <p class="invite-label">Thân mời</p>
+          <p class="invite-name" id="guestName">Bạn thân mến</p>
+          <p class="invite-sub">đến dự lễ tốt nghiệp và chụp ảnh cùng Hân 💗</p>
+        </div>
+
+        <div class="countdown" aria-label="Đếm ngược">
+          <div><span id="cdD">--</span><small>Ngày</small></div>
+          <div><span id="cdH">--</span><small>Giờ</small></div>
+          <div><span id="cdM">--</span><small>Phút</small></div>
+          <div><span id="cdS">--</span><small>Giây</small></div>
+        </div>
+        <p class="event-date" id="eventDateText"></p>
+
+        <div class="cta-row">
+          <a href="#rsvp" class="btn primary">Xác nhận tham dự</a>
+          <a href="#thong-tin" class="btn ghost">Xem thông tin</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- THÔNG TIN -->
+    <section id="thong-tin" class="section">
+      <h2>Thông tin buổi lễ</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="icon">🕗</div>
+          <h3>Thời gian</h3>
+          <p id="timeText"></p>
+          <small>Lưu ý: giờ có thể đổi theo lịch trường — Hân sẽ cập nhật.</small>
+        </div>
+        <div class="card">
+          <div class="icon">📍</div>
+          <h3>Địa điểm</h3>
+          <p><strong id="roomText"></strong><br><span id="addressText"></span></p>
+          <a id="mapsBtn" class="btn small" target="_blank" rel="noopener" href="#">Mở Google Maps</a>
+        </div>
+        <div class="card">
+          <div class="icon">📞</div>
+          <h3>Liên hệ</h3>
+          <p>Hân: <a id="phoneLink" href="#"><strong id="phoneText"></strong></a></p>
+          <div class="cta-row">
+            <a id="callBtn" class="btn small" href="#">Gọi</a>
+            <a id="zaloBtn" class="btn small ghost" target="_blank" rel="noopener" href="#">Nhắn Zalo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LỊCH TRÌNH -->
+    <section id="lich-trinh" class="section alt">
+      <h2>Lịch trình dự kiến</h2>
+      <ol class="timeline">
+        <li><strong>Trước giờ lễ:</strong> Đón khách, chụp ảnh check-in cùng Hân.</li>
+        <li><strong>Trong lễ:</strong> Dự lễ tại A.116.</li>
+        <li><strong>Sau lễ:</strong> Chụp ảnh kỷ niệm quanh Cơ sở A + đi ăn nhẹ (tùy).</li>
+      </ol>
+      <p class="hint">Bạn muốn thêm / sửa timeline không? Nói mình 1 câu là mình cập nhật.</p>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="section">
+      <h2>Xác nhận tham dự</h2>
+      <p class="muted">Điền form dưới đây, thông tin sẽ tự lưu vào Google Sheet của Hân.</p>
+      <form id="rsvpForm" class="form">
+        <label>Tên của bạn
+          <input name="name" id="fName" required maxlength="80" placeholder="VD: Minh Anh" />
+        </label>
+        <label>Bạn có đến được không?
+          <select name="attend" id="fAttend" required>
+            <option value="YES">Có, chắc chắn đến 💗</option>
+            <option value="MAYBE">Đang cân nhắc 🤔</option>
+            <option value="NO">Tiếc quá, không đến được 🥺</option>
+          </select>
+        </label>
+        <label>Số người đi cùng (kể cả bạn)
+          <input name="count" id="fCount" type="number" min="1" max="10" value="1" />
+        </label>
+        <label>Lời chúc / nhắn gửi
+          <textarea name="wish" id="fWish" rows="3" maxlength="500" placeholder="Gửi vài lời cho Hân nhé..."></textarea>
+        </label>
+        <button class="btn primary" type="submit" id="submitBtn">Gửi xác nhận</button>
+        <p class="form-msg" id="formMsg" role="status"></p>
+      </form>
+      <p class="hint" id="sheetHint"></p>
+    </section>
+
+    <footer class="footer">
+      <p>Cảm ơn bạn đã đến chung vui cùng Hân 🎓 · UEH-ISB</p>
+      <p><a href="admin.html">Trang tạo link mời cá nhân →</a></p>
+    </footer>
+  </main>
+
+  <!-- Nút nổi mobile -->
+  <div class="fab-row">
+    <a id="fabCall" class="fab" href="#">📞</a>
+    <a id="fabMaps" class="fab" target="_blank" rel="noopener" href="#">📍</a>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
