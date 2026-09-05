@@ -38,8 +38,11 @@ function fillStatic() {
 
 function startCountdown() {
   const t = new Date(CONFIG.eventDateISO).getTime();
-  const els = { d: cdD, h: cdH, m: cdM, s: cdS };
-  if (isNaN(t)) return;
+  const els = {
+    d: document.getElementById("cdD"), h: document.getElementById("cdH"),
+    m: document.getElementById("cdM"), s: document.getElementById("cdS"),
+  };
+  if (isNaN(t) || !els.d) return;
   const tick = () => {
     let diff = Math.max(0, t - Date.now());
     els.d.textContent = Math.floor(diff / 864e5);
@@ -109,11 +112,12 @@ let confettiOn = !matchMedia("(prefers-reduced-motion: reduce)").matches;
 /* Nhạc: cần file music.mp3 */
 (function music() {
   const a = document.getElementById("bgm"), b = document.getElementById("musicBtn");
-  let on = false;
-  b?.addEventListener("click", async () => {
+  if (!a || !b) return;
+  b.addEventListener("click", async () => {
+    const on = b.getAttribute("aria-pressed") === "true";
     try {
-      if (!on) { await a.play(); on = true; b.textContent = "⏸"; }
-      else { a.pause(); on = false; b.textContent = "♫"; }
+      if (!on) { await a.play(); b.setAttribute("aria-pressed", "true"); b.setAttribute("aria-label", "Tắt nhạc nền"); }
+      else { a.pause(); b.setAttribute("aria-pressed", "false"); b.setAttribute("aria-label", "Bật nhạc nền"); }
     } catch { alert("Chưa có file music.mp3 trong thư mục web."); }
   });
 })();

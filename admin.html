@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tạo link mời cá nhân · Hân Graduation</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .admin-wrap{max-width:900px;margin:0 auto;padding:2rem 1.25rem 4rem}
+    .admin-wrap h1{font-size:clamp(2rem,6vw,3rem)}
+    .grid2{display:grid;gap:1.2rem;margin-top:1.4rem}
+    .panel{border:1px solid var(--ink);background:#fff;padding:1.3rem}
+    .panel h2{font-size:1.5rem}
+    textarea.code{width:100%;font-family:ui-monospace,Consolas,monospace;font-size:.85rem;padding:.7rem;border:1px solid var(--input-border);border-radius:10px}
+    table.links{width:100%;border-collapse:collapse;background:#fff;font-size:.88rem}
+    table.links th,table.links td{border-bottom:1px solid var(--line);padding:.5rem;text-align:left;word-break:break-all}
+    @media(min-width:860px){.grid2{grid-template-columns:1fr 1fr}}
+  </style>
 </head>
 <body>
   <header class="nav">
@@ -15,8 +26,8 @@
     <h1>Tạo link mời cá nhân</h1>
     <p class="muted">Nhập mỗi dòng 1 tên khách → bấm <strong>Tạo link</strong> → copy cột Link dán vào Google Sheet (cột Link cá nhân). Link mẫu: <code>?to=TenKhach</code></p>
     <div class="grid2">
-      <div class="card">
-        <h3>1. Danh sách khách</h3>
+      <div class="panel">
+        <h2>Danh sách khách</h2>
         <textarea id="names" class="code" rows="10" placeholder="VD:&#10;Cô Lan&#10;Anh Minh&#10;Gia đình bạn An"></textarea>
         <label>Link gốc (Base URL)
           <input id="base" style="width:100%;margin-top:.3rem;padding:.6rem;border-radius:10px;border:1.5px solid var(--input-border,#dfaec0)" />
@@ -26,8 +37,8 @@
           <button class="btn ghost" id="csv">Tải CSV</button>
         </div>
       </div>
-      <div class="card">
-        <h3>2. Kết quả</h3>
+      <div class="panel">
+        <h2>Kết quả</h2>
         <p class="muted" id="count">Chưa có.</p>
         <div style="overflow:auto">
         <table class="links"><thead><tr><th>Tên</th><th>Link</th><th></th></tr></thead><tbody id="rows"></tbody></table>

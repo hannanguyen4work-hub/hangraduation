@@ -38,6 +38,7 @@ Một link cho mỗi khách (`?to=Tên`) + form RSVP ghi thẳng vào Sheet củ
 
 - Tên: Nguyễn Bảo Hân · Hân Graduation · UEH-ISB.
 - Tone do Hân chốt (ghi nhận nguyên văn, không mở rộng): trẻ trung, hồng/trắng/be sáng, clean, đơn giản.
+- Visual world do Hân chốt (Vogue-like editorial, sáng pastel, serif nghệ thuật, intro tự fade-in nhẹ, typographic-first chờ ảnh thật): nền sáng, chữ Didone cỡ lớn, số thứ tự mục, đường hairline; không tối/dramatic.
 
 ## Evidence on Hand
 
