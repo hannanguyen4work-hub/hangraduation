@@ -4,137 +4,211 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thiệp Mời Tốt Nghiệp · Nguyễn Bảo Hân</title>
-  <meta name="description" content="Thiệp mời tốt nghiệp của Nguyễn Bảo Hân – UEH-ISB. Trân trọng kính mời bạn đến chung vui!" />
+  <meta name="description" content="Thiệp mời tốt nghiệp của Nguyễn Bảo Hân – UEH-ISB, 04/10/2026, Phòng A.116 Cơ sở A UEH." />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <canvas id="confetti"></canvas>
+  <canvas id="confetti" aria-hidden="true"></canvas>
   <audio id="bgm" loop preload="none" src="music.mp3"></audio>
+
   <header class="nav">
-    <a class="brand" href="#top">🎓 Hân Graduation</a>
+    <a class="brand" href="#top">Hân · Graduation</a>
     <nav class="nav-links">
+      <a href="#thu-ngo">Thư ngỏ</a>
       <a href="#thong-tin">Thông tin</a>
       <a href="#lich-trinh">Lịch trình</a>
-      <a href="#rsvp">Xác nhận</a>
-      <a href="admin.html" class="admin-link">Tạo link mời</a>
+      <a href="#album">Album</a>
+      <a href="#faq">Hỏi đáp</a>
     </nav>
+    <div class="nav-cta">
+      <button class="icon-btn" id="musicBtn" type="button" title="Bật/tắt nhạc">♫</button>
+      <a href="#rsvp" class="btn primary small">Xác nhận</a>
+    </div>
   </header>
 
   <main id="top">
-    <!-- HERO -->
+    <!-- 1. HERO -->
     <section class="hero">
-      <div class="hero-card">
-        <p class="eyebrow">THIỆP MỜI TỐT NGHIỆP</p>
-        <div class="avatar">H</div>
-        <h1>Nguyễn Bảo Hân</h1>
-        <p class="school" id="schoolLine">UEH-ISB · Viện Tài năng – Đại học UEH</p>
-        <p class="note" id="heroNote">Sự hiện diện của bạn là món quà lớn nhất!</p>
-
-        <div class="invite-box" id="inviteBox">
-          <p class="invite-label">Thân mời</p>
-          <p class="invite-name" id="guestName">Bạn thân mến</p>
-          <p class="invite-sub">đến dự lễ tốt nghiệp và chụp ảnh cùng Hân 💗</p>
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Thiệp mời tốt nghiệp · UEH-ISB</p>
+          <h1>Nguyễn Bảo Hân</h1>
+          <p class="school" id="schoolLine"></p>
+          <div class="invite-box">
+            <p class="invite-label">Thân mời</p>
+            <p class="invite-name" id="guestName">Bạn thân mến</p>
+            <p class="invite-sub">đến dự lễ tốt nghiệp và chụp ảnh cùng Hân</p>
+          </div>
+          <div class="countdown" aria-label="Đếm ngược tới buổi lễ">
+            <div><span id="cdD">--</span><small>Ngày</small></div>
+            <div><span id="cdH">--</span><small>Giờ</small></div>
+            <div><span id="cdM">--</span><small>Phút</small></div>
+            <div><span id="cdS">--</span><small>Giây</small></div>
+          </div>
+          <p class="event-date" id="eventDateText"></p>
+          <div class="cta-row">
+            <a href="#rsvp" class="btn primary">Xác nhận tham dự</a>
+            <a href="#thong-tin" class="btn ghost">Xem thông tin</a>
+          </div>
+          <p class="micro">Link của bạn: <code id="myLink"></code> · <button class="linklike" id="copyLink" type="button">Sao chép</button></p>
         </div>
-
-        <div class="countdown" aria-label="Đếm ngược">
-          <div><span id="cdD">--</span><small>Ngày</small></div>
-          <div><span id="cdH">--</span><small>Giờ</small></div>
-          <div><span id="cdM">--</span><small>Phút</small></div>
-          <div><span id="cdS">--</span><small>Giây</small></div>
+        <aside class="photo-card" aria-label="Thiệp chính">
+          <div class="photo-ph">H</div>
+          <div class="photo-meta">
+            <div><strong>04 . 10 . 2026</strong><span>1:30 chiều</span></div>
+            <div><strong>A.116 · Cơ sở A</strong><span>UEH</span></div>
+          </div>
+          <p class="photo-note" id="heroNote"></p>
+        </aside>
+      </div>
+      <div class="strip">
+        <div class="container strip-grid">
+          <div><strong>04/10/2026</strong><span>Chủ Nhật · 13:30</span></div>
+          <div><strong>A.116 · Cơ sở A</strong><span>59C Nguyễn Đình Chiểu</span></div>
+          <div><strong>Dresscode</strong><span>Trắng · Be · Hồng pastel</span></div>
         </div>
-        <p class="event-date" id="eventDateText"></p>
-
-        <div class="cta-row">
-          <a href="#rsvp" class="btn primary">Xác nhận tham dự</a>
-          <a href="#thong-tin" class="btn ghost">Xem thông tin</a>
-        </div>
-        <div class="cta-row mini">
-          <button class="btn small ghost" id="confettiBtn" type="button">🎉 Bật/tắt hoa giấy</button>
-          <button class="btn small ghost" id="musicBtn" type="button">🎵 Bật nhạc</button>
-        </div>
-        <p class="hint">Nhạc: bỏ file <code>music.mp3</code> vào cùng thư mục để bật (sẽ thêm sau cũng được).</p>
       </div>
     </section>
 
-    <!-- THÔNG TIN -->
-    <section id="thong-tin" class="section">
-      <h2>Thông tin buổi lễ</h2>
-      <div class="cards">
-        <div class="card">
-          <div class="icon">🕗</div>
-          <h3>Thời gian</h3>
-          <p id="timeText"></p>
-          <small>Lưu ý: giờ có thể đổi theo lịch trường — Hân sẽ cập nhật.</small>
+    <!-- 2. THƯ NGỎ -->
+    <section id="thu-ngo" class="section">
+      <div class="container narrow">
+        <p class="eyebrow center">Thư ngỏ</p>
+        <h2>Cảm ơn vì đã là một phần thanh xuân của mình</h2>
+        <div class="letter">
+          <p id="letterText"></p>
+          <p class="sign">— Bảo Hân</p>
         </div>
-        <div class="card">
-          <div class="icon">📍</div>
-          <h3>Địa điểm</h3>
-          <p><strong id="roomText"></strong><br><span id="addressText"></span></p>
-          <a id="mapsBtn" class="btn small" target="_blank" rel="noopener" href="#">Mở Google Maps</a>
-        </div>
-        <div class="card">
-          <div class="icon">📞</div>
-          <h3>Liên hệ</h3>
-          <p>Hân: <a id="phoneLink" href="#"><strong id="phoneText"></strong></a></p>
-          <div class="cta-row">
-            <a id="callBtn" class="btn small" href="#">Gọi</a>
-            <a id="zaloBtn" class="btn small ghost" target="_blank" rel="noopener" href="#">Nhắn Zalo</a>
+      </div>
+    </section>
+
+    <!-- 3. THÔNG TIN -->
+    <section id="thong-tin" class="section alt">
+      <div class="container">
+        <p class="eyebrow center">Thông tin</p>
+        <h2 class="center">Hẹn gặp bạn ở đây</h2>
+        <div class="cards4">
+          <div class="card">
+            <h3>Thời gian</h3>
+            <p class="big" id="timeText"></p>
+            <p class="muted">Nên đến sớm 15–20 phút để gửi xe và chụp ảnh trước lễ.</p>
+          </div>
+          <div class="card">
+            <h3>Địa điểm</h3>
+            <p class="big" id="roomText"></p>
+            <p class="muted" id="addressText"></p>
+            <a id="mapsBtn" class="btn small" target="_blank" rel="noopener" href="#">Mở Google Maps</a>
+          </div>
+          <div class="card">
+            <h3>Liên hệ</h3>
+            <p class="big" id="phoneText"></p>
+            <div class="cta-row left">
+              <a id="callBtn" class="btn small" href="#">Gọi Hân</a>
+              <a id="zaloBtn" class="btn small ghost" target="_blank" rel="noopener" href="#">Zalo</a>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Lưu ý nhỏ</h3>
+            <ul class="tips">
+              <li>Trang phục lịch sự, tone sáng dễ ăn ảnh.</li>
+              <li>Cơ sở A đông — đi xe công nghệ nếu được.</li>
+              <li>Mang theo nụ cười, còn hoa Hân lo.</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- LỊCH TRÌNH -->
-    <section id="lich-trinh" class="section alt">
-      <h2>Lịch trình dự kiến</h2>
-      <ol class="timeline">
-        <li><strong>Trước giờ lễ:</strong> Đón khách, chụp ảnh check-in cùng Hân.</li>
-        <li><strong>Trong lễ:</strong> Dự lễ tại A.116.</li>
-        <li><strong>Sau lễ:</strong> Chụp ảnh kỷ niệm quanh Cơ sở A + đi ăn nhẹ (tùy).</li>
-      </ol>
-      <p class="hint">Bạn muốn thêm / sửa timeline không? Nói mình 1 câu là mình cập nhật.</p>
+    <!-- 4. LỊCH TRÌNH -->
+    <section id="lich-trinh" class="section">
+      <div class="container narrow">
+        <p class="eyebrow center">Lịch trình</p>
+        <h2 class="center">Buổi chiều hôm đó</h2>
+        <ol class="timeline">
+          <li><time>13:30</time><div><strong>Đón khách · Check-in</strong><p>Gặp nhau trước A.116, chụp ảnh, gửi đồ.</p></div></li>
+          <li><time>14:00</time><div><strong>Dự lễ tốt nghiệp</strong><p>Lễ chính trong hội trường A.116.</p></div></li>
+          <li><time>15:30</time><div><strong>Chụp ảnh kỷ niệm</strong><p>Dạo quanh Cơ sở A: sảnh, cầu thang, sân trường.</p></div></li>
+          <li><time>16:30</time><div><strong>Tiệc nhẹ / cà phê</strong><p>Ai rảnh thì đi cùng Hân và gia đình.</p></div></li>
+        </ol>
+      </div>
     </section>
 
-    <!-- RSVP -->
-    <section id="rsvp" class="section">
-      <h2>Xác nhận tham dự</h2>
-      <p class="muted">Điền form dưới đây, thông tin sẽ tự lưu vào Google Sheet của Hân.</p>
-      <form id="rsvpForm" class="form">
-        <label>Tên của bạn
-          <input name="name" id="fName" required maxlength="80" placeholder="VD: Minh Anh" />
-        </label>
-        <label>Bạn có đến được không?
-          <select name="attend" id="fAttend" required>
-            <option value="YES">Có, chắc chắn đến 💗</option>
-            <option value="MAYBE">Đang cân nhắc 🤔</option>
-            <option value="NO">Tiếc quá, không đến được 🥺</option>
-          </select>
-        </label>
-        <label>Số người đi cùng (kể cả bạn)
-          <input name="count" id="fCount" type="number" min="1" max="10" value="1" />
-        </label>
-        <label>Lời chúc / nhắn gửi
-          <textarea name="wish" id="fWish" rows="3" maxlength="500" placeholder="Gửi vài lời cho Hân nhé..."></textarea>
-        </label>
-        <button class="btn primary" type="submit" id="submitBtn">Gửi xác nhận</button>
-        <p class="form-msg" id="formMsg" role="status"></p>
-      </form>
-      <p class="hint" id="sheetHint"></p>
+    <!-- 5. ALBUM -->
+    <section id="album" class="section alt">
+      <div class="container">
+        <p class="eyebrow center">Album</p>
+        <h2 class="center">Chỗ này đợi ảnh của chúng ta</h2>
+        <p class="muted center">Bạn gửi Hân 4–6 tấm là mình gắn vào đây. Tạm thời dùng khung mẫu.</p>
+        <div class="album">
+          <div class="ph">ISB · Năm nhất</div>
+          <div class="ph">Bạn bè</div>
+          <div class="ph">Sân trường</div>
+          <div class="ph">Tốt nghiệp</div>
+          <div class="ph">Gia đình</div>
+          <div class="ph">Hẹn 04.10</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FAQ -->
+    <section id="faq" class="section">
+      <div class="container narrow">
+        <p class="eyebrow center">Hỏi đáp</p>
+        <h2 class="center">Bạn hay hỏi</h2>
+        <details open><summary>Mặc gì cho hợp?</summary><p>Lịch sự, thoải mái. Tone trắng / be / hồng pastel lên hình cùng Hân rất đẹp.</p></details>
+        <details><summary>Gửi xe ở đâu?</summary><p>Bãi xe Cơ sở A, 59C Nguyễn Đình Chiểu. Cuối tuần đông nên bạn đi sớm 15 phút hoặc đi xe công nghệ.</p></details>
+        <details><summary>Đến trễ có được không?</summary><p>Được, cứ nhắn Hân qua Zalo. Sau lễ 15:30 vẫn còn chụp ảnh rất nhiều.</p></details>
+        <details><summary>Có cần mang quà không?</summary><p>Không cần. Bạn đến là Hân vui rồi. Nếu muốn, một tấm hình chung là đủ.</p></details>
+      </div>
+    </section>
+
+    <!-- 7. RSVP -->
+    <section id="rsvp" class="section alt">
+      <div class="container rsvp-grid">
+        <div>
+          <p class="eyebrow">Xác nhận</p>
+          <h2>Bạn có đến không?</h2>
+          <p class="muted">Điền form, thông tin tự lưu vào Google Sheet của Hân. Mỗi khách nên mở bằng link riêng (<code>?to=Tên</code>) để Hân biết ai là ai.</p>
+          <p class="muted" id="sheetHint"></p>
+          <p class="muted">Tạo link hàng loạt ở trang <a href="admin.html">Tạo link mời</a>.</p>
+        </div>
+        <form id="rsvpForm" class="form">
+          <label>Tên của bạn
+            <input id="fName" required maxlength="80" placeholder="VD: Minh Anh" />
+          </label>
+          <label>Bạn có đến được không?
+            <select id="fAttend" required>
+              <option value="YES">Có, chắc chắn đến</option>
+              <option value="MAYBE">Đang cân nhắc</option>
+              <option value="NO">Tiếc quá, không đến được</option>
+            </select>
+          </label>
+          <label>Số người (kể cả bạn)
+            <input id="fCount" type="number" min="1" max="10" value="1" />
+          </label>
+          <label>Lời chúc
+            <textarea id="fWish" rows="3" maxlength="500" placeholder="Gửi vài lời cho Hân nhé..."></textarea>
+          </label>
+          <button class="btn primary" type="submit" id="submitBtn">Gửi xác nhận</button>
+          <p class="form-msg" id="formMsg" role="status"></p>
+        </form>
+      </div>
     </section>
 
     <footer class="footer">
-      <p>Cảm ơn bạn đã đến chung vui cùng Hân 🎓 · UEH-ISB</p>
-      <p><a href="admin.html">Trang tạo link mời cá nhân →</a></p>
+      <div class="container">
+        <p><strong>Hân Graduation</strong> · Cảm ơn bạn đã đến chung vui.</p>
+        <p class="micro"><a href="admin.html">Tạo link mời cá nhân →</a> · <button class="linklike" id="confettiBtn" type="button">Bật/tắt hoa giấy</button></p>
+      </div>
     </footer>
   </main>
 
-  <!-- Nút nổi mobile -->
   <div class="fab-row">
-    <a id="fabCall" class="fab" href="#">📞</a>
-    <a id="fabMaps" class="fab" target="_blank" rel="noopener" href="#">📍</a>
+    <a id="fabCall" class="fab" href="#" aria-label="Gọi">✆</a>
+    <a id="fabMaps" class="fab" target="_blank" rel="noopener" href="#" aria-label="Bản đồ">◎</a>
   </div>
 
   <script src="config.js"></script>
