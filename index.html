@@ -176,10 +176,10 @@
           <p class="muted">Tạo link hàng loạt ở trang <a href="admin.html">Tạo link mời</a>.</p>
         </div>
         <form id="rsvpForm" class="form">
-          <label>Tên của bạn
-            <input id="fName" required maxlength="80" placeholder="VD: Minh Anh" />
+          <label>Tên của bạn <span class="req" aria-hidden="true">*</span>
+            <input id="fName" required maxlength="80" autocomplete="name" placeholder="VD: Minh Anh" />
           </label>
-          <label>Bạn có đến được không?
+          <label>Bạn có đến được không? <span class="req" aria-hidden="true">*</span>
             <select id="fAttend" required>
               <option value="YES">Có, chắc chắn đến</option>
               <option value="MAYBE">Đang cân nhắc</option>
