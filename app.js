@@ -100,3 +100,50 @@ async function submitRSVP(e) {
 fillStatic();
 startCountdown();
 document.getElementById("rsvpForm").addEventListener("submit", submitRSVP);
+
+/* Confetti nhẹ tự code (không thư viện) */
+let confettiOn = true, parts = [];
+function initConfetti() {
+  const c = document.getElementById("confetti");
+  const ctx = c.getContext("2d");
+  function resize() { c.width = innerWidth; c.height = innerHeight; }
+  resize(); addEventListener("resize", resize);
+  const colors = ["#ec5f8c", "#ffb3c7", "#ffd9a0", "#fff3e0", "#ff8fab"];
+  for (let i = 0; i < 70; i++) parts.push({
+    x: Math.random() * innerWidth, y: Math.random() * -innerHeight,
+    w: 5 + Math.random() * 6, h: 8 + Math.random() * 8,
+    vy: 1 + Math.random() * 2, vx: -1 + Math.random() * 2,
+    r: Math.random() * Math.PI, vr: -.05 + Math.random() * .1,
+    col: colors[i % colors.length],
+  });
+  (function draw() {
+    requestAnimationFrame(draw);
+    ctx.clearRect(0, 0, c.width, c.height);
+    if (!confettiOn) return;
+    for (const p of parts) {
+      p.x += p.vx; p.y += p.vy; p.r += p.vr;
+      if (p.y > innerHeight + 20) { p.y = -20; p.x = Math.random() * innerWidth; }
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r);
+      ctx.fillStyle = p.col; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      ctx.restore();
+    }
+  })();
+  document.getElementById("confettiBtn").onclick = () => { confettiOn = !confettiOn; };
+}
+initConfetti();
+
+/* Nhạc nền: cần file music.mp3 cùng thư mục */
+(function initMusic() {
+  const audio = document.getElementById("bgm");
+  const btn = document.getElementById("musicBtn");
+  let playing = false;
+  btn.onclick = async () => {
+    try {
+      if (!playing) { await audio.play(); playing = true; btn.textContent = "⏸ Tắt nhạc"; }
+      else { audio.pause(); playing = false; btn.textContent = "🎵 Bật nhạc"; }
+    } catch (e) {
+      alert("Chưa có file music.mp3. Bạn gửi nhạc cho mình, mình gắn vào nhé.");
+    }
+  };
+  audio.addEventListener("error", () => { if (playing) { playing = false; btn.textContent = "🎵 Bật nhạc"; } });
+})();

@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <canvas id="confetti"></canvas>
+  <audio id="bgm" loop preload="none" src="music.mp3"></audio>
   <header class="nav">
     <a class="brand" href="#top">🎓 Hân Graduation</a>
     <nav class="nav-links">
@@ -49,6 +51,11 @@
           <a href="#rsvp" class="btn primary">Xác nhận tham dự</a>
           <a href="#thong-tin" class="btn ghost">Xem thông tin</a>
         </div>
+        <div class="cta-row mini">
+          <button class="btn small ghost" id="confettiBtn" type="button">🎉 Bật/tắt hoa giấy</button>
+          <button class="btn small ghost" id="musicBtn" type="button">🎵 Bật nhạc</button>
+        </div>
+        <p class="hint">Nhạc: bỏ file <code>music.mp3</code> vào cùng thư mục để bật (sẽ thêm sau cũng được).</p>
       </div>
     </section>
 

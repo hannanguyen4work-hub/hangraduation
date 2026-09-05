@@ -6,8 +6,8 @@ const CONFIG = {
   major: "Cử nhân UEH-ISB",
   // Ngày giờ: bạn sửa lại cho đúng lịch thật. Định dạng ISO để countdown chạy.
   // VD: "2026-11-15T08:00:00+07:00"
-  eventDateISO: "2026-11-15T08:00:00+07:00",
-  eventDateText: "8:00 Sáng · Thứ Bảy, 15/11/2026 (dự kiến – bạn sửa lại)",
+  eventDateISO: "2026-10-04T13:30:00+07:00",
+  eventDateText: "1:30 Chiều · Chủ Nhật, 04/10/2026",
   room: "Phòng A.116 – Cơ sở A, UEH",
   address: "59C Nguyễn Đình Chiểu, P. Xuân Hòa, TP. Hồ Chí Minh",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=UEH+C%C6%A1+s%E1%BB%9F+A+59C+Nguy%E1%BB%85n+%C4%90%C3%ACnh+Chi%E1%BB%83u",
